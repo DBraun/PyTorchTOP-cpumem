@@ -7,7 +7,7 @@
 From [https://pytorch.org/](https://pytorch.org/) download, 1.4 (stable), Windows, LibTorch, C++/Java, CUDA 10.1
 
 ### TouchDesigner Hack :/
-I've tesed TouchDesigner 2019.20140. From the place where you downloaded LibTorch, go to `libtorch\lib`. Then take `libiomp5md.dll` and overwrite the `libiomp5md.dll` for your TouchDesigner: `C:\Program Files\Derivative\TouchDesigner099\bin`.
+I've tested TouchDesigner 2019.20140. From the place where you downloaded LibTorch, go to `libtorch\lib`. Then take `libiomp5md.dll` and overwrite the `libiomp5md.dll` for your TouchDesigner: `C:\Program Files\Derivative\TouchDesigner099\bin`.
 
 Download PyTorchTOP.dll from the [Releases](https://github.com/DBraun/PyTorchTOP-cpumem/releases) page of this repo. Place it in the `Plugins` folder. Copy the DLL files from `libtorch\lib` into `Plugins` too. Congrats! You're done and can open PyTorchTOP.toe! The remaining steps are for building `PyTorchTOP.dll`.
 
@@ -41,12 +41,18 @@ If it works, you should end up with a Visual Studio solution inside `build`. Ope
 
 ### Neural Style Transfer
 
-This project uses models that have been exported from [Fast Neural Style](https://github.com/pytorch/examples/tree/master/fast_neural_style). These are the steps to creating your own models. Install pytorch for python. Open `neural_style\neural_style.py`. Look for this line `output = style_model(content_image).cpu()`. Before it, write these lines:
+This project uses models that have been exported from [Fast Neural Style](https://github.com/pytorch/examples/tree/master/fast_neural_style). These are the steps to creating your own models. Install pytorch for python. Open `neural_style\neural_style.py`. Look for this line
+    
+    output = style_model(content_image).cpu()`.
+
+Before it, write these lines:
 
 	traced_script_module = torch.jit.trace(style_model, content_image)
 	traced_script_module.save("traced_model.pt")
 
-Now run: `python neural_style/neural_style.py eval --content-image test640x360.jpeg --model saved_models/udnie.pth --output-image myoutput.png --cuda 1`
+Now run:
+
+    python neural_style/neural_style.py eval --content-image test640x360.jpeg --model saved_models/udnie.pth --output-image myoutput.png --cuda 1
 
 Notice that you've provided a content image of a certain resolution, selected a model path, and enabled cuda. Because `test640x360.jpeg` is a 640x360 image, `traced_model.pt` will work with 640x360 images in TouchDesigner. Export a model for each size resolution you need. In TouchDesigner, select the model with the custom parameter `Modelfilepath`.
 
@@ -55,5 +61,5 @@ Notice that you've provided a content image of a certain resolution, selected a 
 Use the channel mix TOP to swap your red channel and blue channel before sending to PyTorchTOP.
 
 ## The Future
-* Build a PURE GPU version based on the TouchDesigner CUDA sample project!
+* Build a PURE GPU version based on the TouchDesigner CUDA sample project! Can `torch::from_blob` take a cudaArray pointer?
 * Store the size of the model in the `*.pt` files and do error checking to make sure the input image matches this resolution.
