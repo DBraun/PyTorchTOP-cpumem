@@ -17,7 +17,7 @@ From NVIDIA, install CUDA 10.1, which will create `C:\Program Files\NVIDIA GPU C
 
 ## CMake
 
-I've tested [CMake](https://cmake.org/download/) 3.15.1. Inside the root of this directory:
+I've tested [CMake](https://cmake.org/download/) 3.15.1. Inside the root of `PyTorchTOP-cpumem`:
 
     mkdir build
     cd build
@@ -43,14 +43,14 @@ If it works, you should end up with a Visual Studio solution inside `build`. Ope
 
 This project uses models that have been exported from [Fast Neural Style](https://github.com/pytorch/examples/tree/master/fast_neural_style). These are the steps to creating your own models. Install pytorch for python. Open `neural_style\neural_style.py`. Look for this line
     
-    output = style_model(content_image).cpu()`.
+    output = style_model(content_image).cpu()
 
 Before it, write these lines:
 
 	traced_script_module = torch.jit.trace(style_model, content_image)
 	traced_script_module.save("traced_model.pt")
 
-Now run:
+To save a new `traced_model.pt`, run:
 
     python neural_style/neural_style.py eval --content-image test640x360.jpeg --model saved_models/udnie.pth --output-image myoutput.png --cuda 1
 
