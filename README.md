@@ -21,7 +21,7 @@ I've tested [CMake](https://cmake.org/download/) 3.15.1. Inside the root of `PyT
 
     mkdir build
     cd build
-    cmake -DCMAKE\_PREFIX_PATH=/path/to/libtorch ..
+    cmake -DCMAKE_PREFIX_PATH=/path/to/libtorch ..
 
 where `/path/to/libtorch` should be the full path to the unzipped LibTorch distribution. Expected output:
 
