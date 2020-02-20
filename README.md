@@ -6,15 +6,14 @@
 ### Download LibTorch
 From [https://pytorch.org/](https://pytorch.org/) download, 1.4 (stable), Windows, LibTorch, C++/Java, CUDA 10.1
 
-### ~TouchDesigner Hack~
+### TouchDesigner Hack :/
 I've tesed TouchDesigner 2019.20140. From the place where you downloaded LibTorch, go to `libtorch\lib`. Then take `libiomp5md.dll` and overwrite the `libiomp5md.dll` for your TouchDesigner: `C:\Program Files\Derivative\TouchDesigner099\bin`.
 
-##
-Download PyTorchTOP.dll from the [Releases](https://github.com/DBraun/PyTorchTOP-cpumem/releases) page of this repo. Place it in the `Plugins` folder.
+Download PyTorchTOP.dll from the [Releases](https://github.com/DBraun/PyTorchTOP-cpumem/releases) page of this repo. Place it in the `Plugins` folder. Copy the DLL files from `libtorch\lib` into `Plugins` too. Congrats! You're done and can open PyTorchTOP.toe! The remaining steps are for building `PyTorchTOP.dll`.
 
 ## CUDA and CUDNN
 
-From NVIDIA, install CUDA 10.1, which will create `C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1`. Download CUDA 7.6.5 for 10.1 and place the files into this folder too. Copy the DLL files from `libtorch\lib` into `Plugins` too. Congrats! You're done and can open PyTorchTOP.toe! The remaining steps are for building `PyTorchTOP.dll`.
+From NVIDIA, install CUDA 10.1, which will create `C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1`. Download CUDA 7.6.5 for 10.1 and place the files into this folder too.
 
 ## CMake
 
@@ -38,7 +37,7 @@ where `/path/to/libtorch` should be the full path to the unzipped LibTorch distr
 	-- Configuring done
 	-- Generating done
 	-- Build files have been written to: /path/to/PyTorchTOP-cpumem/build
-If it works, you should end up with a Visual Studio solution inside `build`. Open `PyTorchTOP.sln`, select the Release build and press F5 to build/launch TouchDesigner. This build `PyTorchTOP.dll` and place it in `PyTorchTOP-cpumem\Plugins` as well as all the necessary libtorch DLLs.
+If it works, you should end up with a Visual Studio solution inside `build`. Open `PyTorchTOP.sln`, select the Release build and press F5 to build the DLL and launch TouchDesigner.
 
 ### Neural Style Transfer
 
