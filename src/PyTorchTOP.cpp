@@ -130,8 +130,6 @@ PyTorchTOP::getOutputFormat(TOP_OutputFormat* format, const OP_Inputs* inputs, v
 		return false;
 	}
 
-	inputs->getInputTOP(0);
-
 	format->width = input->width;
 	format->height = input->height;
 
