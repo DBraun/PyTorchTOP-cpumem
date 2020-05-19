@@ -7,7 +7,7 @@
 From [https://pytorch.org/](https://pytorch.org/) download, 1.4 (stable), Windows, LibTorch, C++/Java, CUDA 10.1
 
 ### TouchDesigner Hack :/
-I've tested TouchDesigner 2019.20140. From the place where you downloaded LibTorch, go to `libtorch\lib`. Then take `libiomp5md.dll` and overwrite the `libiomp5md.dll` for your TouchDesigner: `C:\Program Files\Derivative\TouchDesigner099\bin`.
+I've tested TouchDesigner 2020.22080. From the place where you downloaded LibTorch, go to `libtorch\lib`. Then take `libiomp5md.dll` and overwrite the `libiomp5md.dll` for your TouchDesigner: `C:\Program Files\Derivative\TouchDesigner099\bin`.
 
 Download PyTorchTOP.dll from the [Releases](https://github.com/DBraun/PyTorchTOP-cpumem/releases) page of this repo. Place it in the `Plugins` folder. Copy the DLL files from `libtorch\lib` into `Plugins` too. Congrats! You're done and can open PyTorchTOP.toe! The remaining steps are for building `PyTorchTOP.dll`.
 

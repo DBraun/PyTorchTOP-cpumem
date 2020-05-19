@@ -225,5 +225,5 @@ target_link_libraries(${PROJECT_NAME} PUBLIC "${ADDITIONAL_LIBRARY_DEPENDENCIES}
 # Debugging
 ################################################################################
 set_target_properties(${PROJECT_NAME} PROPERTIES
-                      VS_DEBUGGER_COMMAND "C:\\Program Files\\Derivative\\TouchDesigner099\\bin\\TouchDesigner099.exe"
+                      VS_DEBUGGER_COMMAND "C:\\Program Files\\Derivative\\TouchDesigner099\\bin\\TouchDesigner.exe"
                       VS_DEBUGGER_COMMAND_ARGUMENTS "..\\$(ProjectName).toe")
