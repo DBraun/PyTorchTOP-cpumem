@@ -44,9 +44,9 @@ The steps to build a debug-mode Visual Studio solution are similar. Instead of `
     mkdir build_debug
     cd build_debug
     set DEBUG=1
-    cmake -DCMAKE_PREFIX_PATH=/path/to/libtorch ..
+    cmake -DCMAKE_PREFIX_PATH=/path/to/libtorch-debug-version ..
 
-Now you can build `build_debug\PyTorchTOP.sln` in Debug mode. You should copy the `.pdb` files from the libtorch folder to this repo's `Plugins` folder in order to help with stack traces during debugging.
+Now you can build `build_debug\PyTorchTOP.sln` in Debug mode. You should copy the `.pdb` files from the libtorch-debug-version folder to this repo's `Plugins` folder in order to help with stack traces during debugging.
 
 ### Neural Style Transfer
 
