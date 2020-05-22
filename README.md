@@ -19,8 +19,8 @@ From NVIDIA, install CUDA 10.1, which will create `C:\Program Files\NVIDIA GPU C
 
 I've tested [CMake](https://cmake.org/download/) 3.15.1. Inside the root of `PyTorchTOP-cpumem`:
 
-    mkdir build
-    cd build
+    mkdir build_release
+    cd build_release
     cmake -DCMAKE_PREFIX_PATH=/path/to/libtorch ..
 
 where `/path/to/libtorch` should be the full path to the unzipped LibTorch distribution. Expected output:
@@ -36,8 +36,17 @@ where `/path/to/libtorch` should be the full path to the unzipped LibTorch distr
 	-- Added CUDA NVCC flags for: -gencode;arch=compute_75,code=sm_75
 	-- Configuring done
 	-- Generating done
-	-- Build files have been written to: /path/to/PyTorchTOP-cpumem/build
-If it works, you should end up with a Visual Studio solution inside `build`. Open `PyTorchTOP.sln`, select the Release build and press F5 to build the DLL and launch TouchDesigner.
+	-- Build files have been written to: /path/to/PyTorchTOP-cpumem/build_release
+If it works, you should end up with a Visual Studio Solution `build_release\PyTorchTOP.sln`. Open it and select the Release build. Press F5 to build the DLL and launch TouchDesigner.
+
+The steps to build a debug-mode Visual Studio solution are similar. Instead of `build_release`, make a folder `build_debug`.
+    
+    mkdir build_debug
+    cd build_debug
+    set DEBUG=1
+    cmake -DCMAKE_PREFIX_PATH=/path/to/libtorch ..
+
+Now you can build `build_debug\PyTorchTOP.sln` in Debug mode. You should copy the `.pdb` files from the libtorch folder to this repo's `Plugins` folder in order to help with stack traces during debugging.
 
 ### Neural Style Transfer
 
@@ -61,5 +70,5 @@ Notice that you've provided a content image of a certain resolution, selected a 
 Use the channel mix TOP to swap your red channel and blue channel before sending to PyTorchTOP.
 
 ## The Future
-* Build a PURE GPU version based on the TouchDesigner CUDA sample project! Can `torch::from_blob` take a cudaArray pointer?
+* Fix the clumsiness of the RGBA-BGRA swapping in TouchDesigner.
 * Store the size of the model in the `*.pt` files and do error checking to make sure the input image matches this resolution.
