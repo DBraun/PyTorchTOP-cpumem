@@ -9,11 +9,11 @@ From [https://pytorch.org/](https://pytorch.org/) download, 1.4 (stable), Window
 ### TouchDesigner Hack :/
 I've tested TouchDesigner 2020.22080. From the place where you downloaded LibTorch, go to `libtorch\lib`. Then take `libiomp5md.dll` and overwrite the `libiomp5md.dll` for your TouchDesigner: `C:\Program Files\Derivative\TouchDesigner099\bin`.
 
-Download PyTorchTOP.dll from the [Releases](https://github.com/DBraun/PyTorchTOP-cpumem/releases) page of this repo. Place it in the `Plugins` folder. Copy the DLL files from `libtorch\lib` into `Plugins` too. Congrats! You're done and can open PyTorchTOP.toe! The remaining steps are for building `PyTorchTOP.dll`.
+Download `PyTorchTOP.dll` from the [Releases](https://github.com/DBraun/PyTorchTOP-cpumem/releases) page of this repo. Place it in this repo's `Plugins` folder. Copy the DLL files from `libtorch\lib` into `Plugins` too. Congrats! You're done and can open PyTorchTOP.toe! The remaining steps are for building `PyTorchTOP.dll`.
 
 ## CUDA and CUDNN
 
-From NVIDIA, install CUDA 10.1, which will create `C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1`. Download CUDA 7.6.5 for 10.1 and place the files into this folder too.
+From NVIDIA, install CUDA 10.1, which will create `C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1`. Download cuDNN 7.6.5 for 10.1 and place the files into this folder too.
 
 ## CMake
 
@@ -63,12 +63,13 @@ To save a new `traced_model.pt`, run:
 
     python neural_style/neural_style.py eval --content-image test640x360.jpeg --model saved_models/udnie.pth --output-image myoutput.png --cuda 1
 
-Notice that you've provided a content image of a certain resolution, selected a model path, and enabled cuda. Because `test640x360.jpeg` is a 640x360 image, `traced_model.pt` will work with 640x360 images in TouchDesigner. Export a model for each size resolution you need. In TouchDesigner, select the model with the custom parameter `Modelfilepath`.
+Notice that you've provided a content image of a certain resolution, selected a model path, and enabled cuda. Because `test640x360.jpeg` is a 640x360 image, the newly created `traced_model.pt` will work with 640x360 images in TouchDesigner. Export a model for each size resolution you need and rename as necessary. In TouchDesigner, select the model with the custom parameter `Modelfilepath`.
 
 ## Extra notes
 
 Use the channel mix TOP to swap your red channel and blue channel before sending to PyTorchTOP.
 
 ## The Future
+* Use CUDA memory copying to avoid CPU-GPU interoperations ([@DBraun](https://github.com/DBraun) has done this in a private repo)
 * Fix the clumsiness of the RGBA-BGRA swapping in TouchDesigner.
-* Store the size of the model in the `*.pt` files and do error checking to make sure the input image matches this resolution.
+* Better handling of input resolution and output resolution. Can it be stored in the pt file?
