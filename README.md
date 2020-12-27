@@ -1,6 +1,8 @@
 # PyTorchTOP
 ![](docs/trillium_mosaic.jpg)
 
+**Update December 27, 2020: a GPU version of PyTorchTOP has been released [here](https://github.com/DBraun/PyTorchTOP). It doesn't demonstrate Style Transfer, but with simple modifications it could.**
+
 ## Installation on Windows (no OSX support)
 
 ### Download LibTorch
@@ -70,6 +72,5 @@ Notice that you've provided a content image of a certain resolution, selected a 
 Use the channel mix TOP to swap your red channel and blue channel before sending to PyTorchTOP.
 
 ## The Future
-* Use CUDA memory copying to avoid CPU-GPU interoperations ([@DBraun](https://github.com/DBraun) has done this in a private repo)
 * Fix the clumsiness of the RGBA-BGRA swapping in TouchDesigner.
 * Better handling of input resolution and output resolution. Can it be stored in the pt file?
