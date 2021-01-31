@@ -1,7 +1,7 @@
 # PyTorchTOP
 ![](docs/trillium_mosaic.jpg)
 
-**Update December 27, 2020: a GPU version of PyTorchTOP has been released [here](https://github.com/DBraun/PyTorchTOP). It doesn't demonstrate Style Transfer, but with simple modifications it could.**
+**Update December 27, 2020: a GPU version of PyTorchTOP has been released [here](https://github.com/DBraun/PyTorchTOP). This [branch](https://github.com/DBraun/PyTorchTOP/tree/model/style-transfer) demonstrates Style Transfer.**
 
 ## Installation on Windows (no OSX support)
 
